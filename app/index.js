@@ -4,7 +4,7 @@ const axios = require('axios');
 const app = new App({
   // token: process.env.SLACK_BOT_TOKEN,
   // appToken: process.env.SLACK_APP_TOKEN,
-  token: 'xoxb-2102817429777-5533511907058-0kIKlXd6AuHgg6dgbpO79kIL',
+  token: 'xoxb-2102817429777-5533511907058-WsTRDPT0pZ2GM6ReQxtM6L5G',
   appToken:
     'xapp-1-A05FRTU6876-5546157832753-8780ab8eeefa794ed2dad7993261699b6de193db550a512a187944c936089d5e',
   socketMode: true,
