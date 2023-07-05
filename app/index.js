@@ -6,7 +6,7 @@ const app = new App({
   // appToken: process.env.SLACK_APP_TOKEN,
   token: 'xoxb-2102817429777-5533511907058-0kIKlXd6AuHgg6dgbpO79kIL',
   appToken:
-    'xapp-1-A05FRTU6876-5535947395188-d325e019bd3d91d6a3050bb1b9f51d4c08811ab40183f6925ba34766fefbb468',
+    'xapp-1-A05FRTU6876-5546157832753-8780ab8eeefa794ed2dad7993261699b6de193db550a512a187944c936089d5e',
   socketMode: true,
 });
 
