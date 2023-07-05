@@ -4,9 +4,9 @@ const axios = require('axios');
 const app = new App({
   // token: process.env.SLACK_BOT_TOKEN,
   // appToken: process.env.SLACK_APP_TOKEN,
-  token: 'xoxb-5015253507968-5529925160533-AcvZbdNhBzERTsRCgNDfofkQ',
+  token: 'xoxb-2102817429777-5533511907058-0kIKlXd6AuHgg6dgbpO79kIL',
   appToken:
-    'xapp-1-A05FNMJ8VQT-5546112931521-f68f0a53ef0e314c04d49984574c0b0ca2f4825a9f887ce5fdd13332924ef2d7',
+    'xapp-1-A05FRTU6876-5535947395188-d325e019bd3d91d6a3050bb1b9f51d4c08811ab40183f6925ba34766fefbb468',
   socketMode: true,
 });
 
