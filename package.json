@@ -3,9 +3,8 @@
   "version": "2.0.0",
   "description": "Getting Started ⚡️ Bolt for JavaScript",
   "scripts": {
-    "start": "nodemon ./server-local.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "netlify-lambda build"
+    "start": "nodemon ./app/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "license": "MIT",
   "dependencies": {
@@ -13,8 +12,7 @@
     "axios": "^1.4.0"
   },
   "devDependencies": {
-    "webpack-cli": "^5.1.4",
     "nodemon": "^1.19.2",
-    "netlify-lambda": "^1.6.3"
+    "webpack-cli": "^5.1.4"
   }
 }

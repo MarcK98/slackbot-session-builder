@@ -4,9 +4,9 @@ const axios = require('axios');
 const app = new App({
   // token: process.env.SLACK_BOT_TOKEN,
   // appToken: process.env.SLACK_APP_TOKEN,
-  token: 'xoxb-5015253507968-5529925160533-uq6LuhsmfeBlwBU785tQmoJ2',
+  token: 'xoxb-5015253507968-5529925160533-ub0qxBuQ90I6zolK2Hcd4Vre',
   appToken:
-    'xapp-1-A05FNMJ8VQT-5526191975222-84511e6e687b21a7b202ee8454c16fdfa2a15d83cd36929878f11d622c944e10',
+    'xapp-1-A05FNMJ8VQT-5535776422964-c32598e372ffd86f0d380d17c7b63446590c98c20e167ad63d13079a03e03f6e',
   socketMode: true,
 });
 
@@ -78,5 +78,5 @@ app.message(RegExp('[a-zA-Z]'), async ({ message, say }) => {
 (async () => {
   await app.start(process.env.PORT || 3000);
 
-  console.log('⚡️ Bolt app is running!');
+  console.log('Bot is running!');
 })();
