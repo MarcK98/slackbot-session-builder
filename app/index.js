@@ -48,7 +48,7 @@ app.message(RegExp('[a-zA-Z]'), async ({ message, say }) => {
     }
   })();
 
-  if (customerId === '' || flowId === '') {
+  if (body.customerId === '' || body.flowId === '') {
     return await say(
       `Unknown client: ${clientName}\nAvailable clients: mest - tipico - sonnenspiele - paylado - wealth guardian - sira`,
     );
