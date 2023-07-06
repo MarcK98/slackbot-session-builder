@@ -12,7 +12,13 @@ const app = new App({
 
 app.message(RegExp('[a-zA-Z]'), async ({ message, say }) => {
   const { text: clientName } = message;
-  const { customerId, flowId } = (() => {
+
+  const body: {
+    customerId: String,
+    flowId: String,
+    redirectURL?: string,
+    language?: string,
+  } = (() => {
     switch (clientName) {
       case 'mest':
         return {
@@ -23,6 +29,7 @@ app.message(RegExp('[a-zA-Z]'), async ({ message, say }) => {
         return {
           customerId: '63c94fb77376527d33b1a537',
           flowId: '64078b7308949c2ff28b2b25',
+          redirectURL: 'https://tipico.com',
         };
       case 'sonnenspiele':
         return {
@@ -58,8 +65,9 @@ app.message(RegExp('[a-zA-Z]'), async ({ message, say }) => {
   const {
     data: { startURL },
   } = await axios.post('https://staging.id.sonio-group.com/api/v3/session', {
-    customerId,
-    flowId,
+    language: 'en',
+    redirectURL: 'https://google.com',
+    ...body,
   });
 
   await say({
