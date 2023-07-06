@@ -10,12 +10,7 @@ const app = new App({
 app.message(RegExp('[a-zA-Z]'), async ({ message, say }) => {
   const { text: clientName } = message;
 
-  const body: {
-    customerId: String,
-    flowId: String,
-    redirectURL?: string,
-    language?: string,
-  } = (() => {
+  const body = (() => {
     switch (clientName) {
       case 'mest':
         return {
