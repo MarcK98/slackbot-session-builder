@@ -56,7 +56,7 @@ app.message(RegExp('[a-zA-Z]'), async ({ message, say }) => {
 
   const {
     data: { startURL },
-  } = await axios.post('https://staging.id.sonio-group.com/api/v3/session', {
+  } = await axios.post(process.env.SESSION_REQUEST_URL, {
     language: 'en',
     redirectURL: 'https://google.com',
     ...body,
