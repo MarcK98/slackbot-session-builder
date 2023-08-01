@@ -16,35 +16,41 @@ app.message(RegExp('[a-zA-Z]'), async ({ message, say }) => {
         return {
           customerId: '640f0f80dadb9de0604da094',
           flowId: '6411c064a47f80dc7e9bd748',
+          apiVersion: 'v2',
         };
       case 'tipico':
         return {
           customerId: '63c94fb77376527d33b1a537',
           flowId: '64078b7308949c2ff28b2b25',
           redirectURL: 'https://tipico.com',
+          apiVersion: 'v3',
         };
       case 'sonnenspiele':
         return {
           customerId: '63eff4e9ffd137969af45804',
           flowId: '640f0ededadb9de0604da092',
+          apiVersion: 'v3',
         };
       case 'paylado':
         return {
           customerId: '647efca334a855cf37cf58c3',
           flowId: '647efd9734a855cf37cf58c5',
+          apiVersion: 'v3',
         };
       case 'wealth guardian':
         return {
           customerId: '646227d3c2b1798cd038302b',
           flowId: '646227b1c2b1798cd038302a',
+          apiVersion: 'v3',
         };
       case 'sira':
         return {
           customerId: '64a2c9c785219dfcb177d2d2',
           flowId: '64a2c9a185219dfcb177d2d1',
+          apiVersion: 'v3',
         };
       default:
-        return { customerId: '', flowId: '' };
+        return { customerId: '', flowId: '', apiVersion: 'v3' };
     }
   })();
 
@@ -56,11 +62,14 @@ app.message(RegExp('[a-zA-Z]'), async ({ message, say }) => {
 
   const {
     data: { startURL },
-  } = await axios.post(process.env.SESSION_REQUEST_URL, {
-    language: 'en',
-    redirectURL: 'https://google.com',
-    ...body,
-  });
+  } = await axios.post(
+    `${process.env.SESSION_REQUEST_URL}/api/${body.apiVersion}/session`,
+    {
+      language: 'en',
+      redirectURL: 'https://google.com',
+      ...body,
+    },
+  );
 
   await say({
     blocks: [
