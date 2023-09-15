@@ -21,7 +21,7 @@ app.message(RegExp('[a-zA-Z]'), async ({ message, say }) => {
       case 'tipico':
         return {
           customerId: '63c94fb77376527d33b1a537',
-          flowId: '64078b7308949c2ff28b2b25',
+          flowId: '640764c178046a37f9b47e26',
           redirectURL: 'https://tipico.com',
           apiVersion: 'v3',
         };
