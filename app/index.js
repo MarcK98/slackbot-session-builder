@@ -49,6 +49,12 @@ app.message(RegExp('[a-zA-Z]'), async ({ message, say }) => {
           flowId: '64a2c9a185219dfcb177d2d1',
           apiVersion: 'v3',
         };
+      case 'finyoz':
+        return {
+          customerId: '650bf5968abfd064b5b44e2e',
+          flowId: '650bf5e4ef1e42dd2faba8cc',
+          apiVersion: 'v3',
+        };
       default:
         return { customerId: '', flowId: '', apiVersion: 'v3' };
     }
@@ -56,7 +62,7 @@ app.message(RegExp('[a-zA-Z]'), async ({ message, say }) => {
 
   if (body.customerId === '' || body.flowId === '') {
     return await say(
-      `Unknown client: ${clientName}\nAvailable clients: mest - tipico - sonnenspiele - paylado - wealth guardian - sira`,
+      `Unknown client: ${clientName}\nAvailable clients: mest - tipico - sonnenspiele - paylado - wealth guardian - sira - finyoz`,
     );
   }
 
