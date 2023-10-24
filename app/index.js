@@ -58,7 +58,7 @@ app.message(RegExp('[a-zA-Z]'), async ({ message, say }) => {
       case 'finductive':
         return {
           customerId: '64d1eaa7373499249f9fe9ff',
-          flowId: '64d1ea76373499249f9fe9fe',
+          flowId: '6526590a8abfd064b5b44e39',
           apiVersion: 'v3',
         };
       default:
