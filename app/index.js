@@ -59,7 +59,7 @@ app.message(RegExp('[a-zA-Z]'), async ({ message, say }) => {
         return {
           customerId: '64d1eaa7373499249f9fe9ff',
           flowId: '6526590a8abfd064b5b44e39',
-          apiVersion: 'v3',
+          apiVersion: 'v4',
         };
       default:
         return { customerId: '', flowId: '', apiVersion: 'v3' };
