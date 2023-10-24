@@ -55,6 +55,12 @@ app.message(RegExp('[a-zA-Z]'), async ({ message, say }) => {
           flowId: '650bf5e4ef1e42dd2faba8cc',
           apiVersion: 'v3',
         };
+      case 'finductive':
+        return {
+          customerId: '64d1eaa7373499249f9fe9ff',
+          flowId: '64d1ea76373499249f9fe9fe',
+          apiVersion: 'v3',
+        };
       default:
         return { customerId: '', flowId: '', apiVersion: 'v3' };
     }
