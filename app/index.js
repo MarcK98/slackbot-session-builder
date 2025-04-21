@@ -25,11 +25,31 @@ app.message(RegExp("[a-zA-Z]+"), async ({ message, say }) => {
           redirectURL: "https://tipico.com",
           apiVersion: "v3",
         };
+      case "sonnenspiele v4":
+        return {
+          customerId: "63eff4e9ffd137969af45804",
+          flowId: "65a6a308e446fc3e877725f4",
+          apiVersion: "v4",
+          person: {
+            firstname: "HARTMUT",
+            lastname: "HARTMUT",
+          },
+        };
       case "sonnenspiele":
         return {
           customerId: "63eff4e9ffd137969af45804",
           flowId: "640f0ededadb9de0604da092",
           apiVersion: "v3",
+        };
+      case "mest v4":
+        return {
+          customerId: "640f0f80dadb9de0604da094",
+          flowId: "65ddc5bc649a287d57470f35",
+          apiVersion: "v4",
+          person: {
+            firstname: "HARTMUT",
+            lastname: "HARTMUT",
+          },
         };
       case "paylado":
         return {
@@ -54,6 +74,12 @@ app.message(RegExp("[a-zA-Z]+"), async ({ message, say }) => {
           customerId: "650bf5968abfd064b5b44e2e",
           flowId: "650bf5e4ef1e42dd2faba8cc",
           apiVersion: "v3",
+        };
+      case "intertops":
+        return {
+          customerId: "65f42c272156d096dbe51ca5",
+          flowId: "65f42da72156d096dbe51ca6",
+          apiVersion: "v4",
         };
       case "finductive":
         return {
@@ -86,6 +112,30 @@ app.message(RegExp("[a-zA-Z]+"), async ({ message, say }) => {
             lastname: "HARTMUT",
           },
         };
+      case "tipico games":
+        return {
+          customerId: "673b607d2d5f62e98bf60121",
+          language: "en",
+          apiVersion: "v3",
+          flowId: "673b61172d5f62e98bf60124",
+          redirectURL: "https://www.google.com",
+          person: {
+            firstname: "HARTMUT",
+            lastname: "HARTMUT",
+          },
+        };
+      case "tink games":
+        return {
+          customerId: "673b77e42d5f62e98bf6012a",
+          language: "en",
+          apiVersion: "v4",
+          flowId: "673c544357cef7322b565964",
+          redirectURL: "https://www.google.com",
+          person: {
+            firstname: "HARTMUT",
+            lastname: "HARTMUT",
+          },
+        };
       case "daznbet":
         return {
           flowId: "662b76a95e418f8f800fbad5",
@@ -99,6 +149,45 @@ app.message(RegExp("[a-zA-Z]+"), async ({ message, say }) => {
           customerId: "6682626c20b3b7d3d3a64666",
           redirectURL: "https://google.com",
           apiVersion: "v4",
+        };
+      case "rootz":
+        return {
+          flowId: "65ddb396649a287d57470f32",
+          customerId: "65c34f41e446fc3e87772606",
+          redirectURL: "https://google.com",
+          apiVersion: "v4",
+        };
+      case "wettarena":
+        return {
+          flowId: "671763b886d55c9e233a40af",
+          customerId: "6717636b86d55c9e233a40ae",
+          redirectURL: "https://google.com",
+          apiVersion: "v4",
+        };
+      case "idverse":
+        return {
+          flowId: "66fa75fe0bdca83f076203bc",
+          customerId: "6717636b86d55c9e233a40ae",
+          redirectURL: "https://google.com",
+          apiVersion: "v4",
+        };
+      case "shangri la":
+        return {
+          flowId: "64e8ae9b1ceabc3696e6044d",
+          customerId: "65c34f41e446fc3e87772606",
+          redirectURL: "https://google.com",
+          apiVersion: "v3",
+        };
+      case "megapixel poa":
+        return {
+          flowId: "6720cf7b0fde69a791f078c2",
+          customerId: "6682626c20b3b7d3d3a64666",
+          redirectURL: "https://google.com",
+          apiVersion: "v4",
+          person: {
+            firstname: "HARTMUT",
+            lastname: "HARTMUT",
+          },
         };
       case "bitpanda":
         return {
@@ -121,12 +210,25 @@ app.message(RegExp("[a-zA-Z]+"), async ({ message, say }) => {
           flowId: "6602a03716fa031c901fc0cb",
           apiVersion: "v3",
         };
+      case "etoro":
+        return {
+          customerId: "649025e334a855cf37cf58c7",
+          flowId: "66fba8000bdca83f076203bf",
+          apiVersion: "v3",
+        };
       case "bwin":
         return {
           customerId: "649025e334a855cf37cf58c7",
           flowId: "655f3b7878500066d5ce3c91",
           apiVersion: "v3",
         };
+      case "betano":
+        return {
+          customerId: "649025e334a855cf37cf58c7",
+          flowId: "65d36f128db0af6615cc61f0",
+          apiVersion: "v3",
+        };
+
       default:
         return { customerId: "", flowId: "", apiVersion: "v3" };
     }
