@@ -236,7 +236,7 @@ app.message(RegExp("[a-zA-Z]+"), async ({ message, say }) => {
 
   if (body.customerId === "" || body.flowId === "") {
     return await say(
-      `Unknown client: ${clientName}\nAvailable clients: mest - tipico - sonnenspiele - paylado - wealth guardian - sira - finyoz`
+      `Unknown client: ${clientName}\nAvailable clients: tipico sports - tipico games - tink sports - tink games - sonnenspiele v4 - mest - mest poa - finyoz - finductive - interwetten - intertops - megapixel - megapixel poa - rootz - shangri la - wettarena - idverse - bwin - Betano - Novibet - eToro - Bitpanda.`
     );
   }
 
