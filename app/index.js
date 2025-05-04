@@ -71,8 +71,10 @@ const clients = [
 app.view("client_select_modal", async ({ ack, body, view, client }) => {
   await ack();
 
+  console.log(view.state);
+
   const selectedClient =
-    view.state.values.client_select_block.client_select_action.value;
+    view.state.values.client_select_block.client_select_action.selected_option.value;
 
   // Reuse your switch/case logic
   const bodyData = (() => {
