@@ -39,33 +39,33 @@ const clients = [
 ];
 
 // 2. Listen for "hi" and open a modal
-app.message(/^hi$/i, async ({ message, client }) => {
-  await client.views.open({
-    trigger_id: message.trigger_id,
-    view: {
-      type: "modal",
-      callback_id: "client_select_modal",
-      title: { type: "plain_text", text: "Select Client" },
-      submit: { type: "plain_text", text: "Start Session" },
-      close: { type: "plain_text", text: "Cancel" },
-      blocks: [
-        {
-          type: "input",
-          block_id: "client_select_block",
-          label: { type: "plain_text", text: "Choose a client" },
-          element: {
-            type: "static_select",
-            action_id: "client_select_action",
-            options: clients.map((c) => ({
-              text: { type: "plain_text", text: c.label },
-              value: c.value,
-            })),
-          },
-        },
-      ],
-    },
-  });
-});
+// app.message(/^hi$/i, async ({ message, client }) => {
+//   await client.views.open({
+//     trigger_id: message.trigger_id,
+//     view: {
+//       type: "modal",
+//       callback_id: "client_select_modal",
+//       title: { type: "plain_text", text: "Select Client" },
+//       submit: { type: "plain_text", text: "Start Session" },
+//       close: { type: "plain_text", text: "Cancel" },
+//       blocks: [
+//         {
+//           type: "input",
+//           block_id: "client_select_block",
+//           label: { type: "plain_text", text: "Choose a client" },
+//           element: {
+//             type: "static_select",
+//             action_id: "client_select_action",
+//             options: clients.map((c) => ({
+//               text: { type: "plain_text", text: c.label },
+//               value: c.value,
+//             })),
+//           },
+//         },
+//       ],
+//     },
+//   });
+// });
 
 // 3. Handle modal submission
 app.view("client_select_modal", async ({ ack, body, view, client }) => {
@@ -329,6 +329,36 @@ app.view("client_select_modal", async ({ ack, body, view, client }) => {
         },
       },
     ],
+  });
+});
+
+// Add this instead:
+app.command('/start-session', async ({ ack, body, client }) => {
+  await ack();
+  await client.views.open({
+    trigger_id: body.trigger_id,
+    view: {
+      type: "modal",
+      callback_id: "client_select_modal",
+      title: { type: "plain_text", text: "Select Client" },
+      submit: { type: "plain_text", text: "Start Session" },
+      close: { type: "plain_text", text: "Cancel" },
+      blocks: [
+        {
+          type: "input",
+          block_id: "client_select_block",
+          label: { type: "plain_text", text: "Choose a client" },
+          element: {
+            type: "static_select",
+            action_id: "client_select_action",
+            options: clients.map((c) => ({
+              text: { type: "plain_text", text: c.label },
+              value: c.value,
+            })),
+          },
+        },
+      ],
+    },
   });
 });
 
