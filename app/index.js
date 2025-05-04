@@ -7,11 +7,76 @@ const app = new App({
   socketMode: true,
 });
 
-app.message(RegExp("[a-zA-Z]+"), async ({ message, say }) => {
-  const { text: clientName } = message;
+// 1. Define all clients in a reusable array
+const clients = [
+  { label: "mest", value: "mest" },
+  { label: "tipico", value: "tipico" },
+  { label: "sonnenspiele v4", value: "sonnenspiele v4" },
+  { label: "sonnenspiele", value: "sonnenspiele" },
+  { label: "mest v4", value: "mest v4" },
+  { label: "paylado", value: "paylado" },
+  { label: "wealth guardian", value: "wealth guardian" },
+  { label: "sira", value: "sira" },
+  { label: "finyoz", value: "finyoz" },
+  { label: "intertops", value: "intertops" },
+  { label: "finductive", value: "finductive" },
+  { label: "win2day", value: "win2day" },
+  { label: "tipico tink sports", value: "tipico tink sports" },
+  { label: "tipico games", value: "tipico games" },
+  { label: "tink games", value: "tink games" },
+  { label: "daznbet", value: "daznbet" },
+  { label: "megapixel", value: "megapixel" },
+  { label: "rootz", value: "rootz" },
+  { label: "wettarena", value: "wettarena" },
+  { label: "idverse", value: "idverse" },
+  { label: "shangri la", value: "shangri la" },
+  { label: "megapixel poa", value: "megapixel poa" },
+  { label: "bitpanda", value: "bitpanda" },
+  { label: "novibet", value: "novibet" },
+  { label: "etoro", value: "etoro" },
+  { label: "bwin", value: "bwin" },
+  { label: "betano", value: "betano" },
+];
 
-  const body = (() => {
-    switch (clientName) {
+// 2. Listen for "hi" and open a modal
+app.message(/^hi$/i, async ({ message, client }) => {
+  await client.views.open({
+    trigger_id: message.trigger_id,
+    view: {
+      type: "modal",
+      callback_id: "client_select_modal",
+      title: { type: "plain_text", text: "Select Client" },
+      submit: { type: "plain_text", text: "Start Session" },
+      close: { type: "plain_text", text: "Cancel" },
+      blocks: [
+        {
+          type: "input",
+          block_id: "client_select_block",
+          label: { type: "plain_text", text: "Choose a client" },
+          element: {
+            type: "static_select",
+            action_id: "client_select_action",
+            options: clients.map((c) => ({
+              text: { type: "plain_text", text: c.label },
+              value: c.value,
+            })),
+          },
+        },
+      ],
+    },
+  });
+});
+
+// 3. Handle modal submission
+app.view("client_select_modal", async ({ ack, body, view, client }) => {
+  await ack();
+
+  const selectedClient =
+    view.state.values.client_select_block.client_select_action.value;
+
+  // Reuse your switch/case logic
+  const bodyData = (() => {
+    switch (selectedClient) {
       case "mest":
         return {
           customerId: "640f0f80dadb9de0604da094",
@@ -234,30 +299,33 @@ app.message(RegExp("[a-zA-Z]+"), async ({ message, say }) => {
     }
   })();
 
-  if (body.customerId === "" || body.flowId === "") {
-    return await say(
-      `Unknown client: ${clientName}\nAvailable clients: tipico sports - tipico games - tink sports - tink games - sonnenspiele v4 - mest - mest poa - finyoz - finductive - interwetten - intertops - megapixel - megapixel poa - rootz - shangri la - wettarena - idverse - bwin - Betano - Novibet - eToro - Bitpanda.`
-    );
+  if (bodyData.customerId === "" || bodyData.flowId === "") {
+    await client.chat.postMessage({
+      channel: body.user.id,
+      text: `Unknown client: ${selectedClient}`,
+    });
+    return;
   }
 
   const {
     data: { startURL },
   } = await axios.post(
-    `${process.env.SESSION_REQUEST_URL}/api/${body.apiVersion}/session`,
+    `${process.env.SESSION_REQUEST_URL}/api/${bodyData.apiVersion}/session`,
     {
       language: "en",
       redirectURL: "https://google.com",
-      ...body,
+      ...bodyData,
     }
   );
 
-  await say({
+  await client.chat.postMessage({
+    channel: body.user.id,
     blocks: [
       {
         type: "section",
         text: {
           type: "mrkdwn",
-          text: `New session for ${clientName} \n ${startURL} \n\n`,
+          text: `New session for ${selectedClient} \n ${startURL} \n\n`,
         },
       },
     ],
