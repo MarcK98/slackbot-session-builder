@@ -157,6 +157,14 @@ const clients = [
     apiVersion: "v4",
   },
   {
+    label: "daznbet flow 3",
+    value: "daznbet flow 3",
+    flowId: "662b76be5e418f8f800fbad7",
+    customerId: "660e5bd95e418f8f800fbaa8",
+    redirectURL: "https://google.com",
+    apiVersion: "v4",
+  },
+  {
     label: "megapixel",
     value: "megapixel",
     flowId: "667ebfca20b3b7d3d3a64665",
