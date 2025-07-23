@@ -260,12 +260,22 @@ const clients = [
     flowId: "65d36f128db0af6615cc61f0",
     apiVersion: "v3",
   },
+  {
+    label: "pockerstar",
+    value: "pockerstar",
+    customerId: "66fcfe610bdca83f076203c0",
+    flowId: "6679889b20b3b7d3d3a6465f",
+    apiVersion: "v4",
+    person: {
+      firstname: "HARTMUT",
+      lastname: "HARTMUT",
+      phone: "324424324",
+    },
+  },
 ];
 
 app.view("client_select_modal", async ({ ack, body, view, client }) => {
   await ack();
-
-  console.log(view.state);
 
   const selectedClient =
     view.state.values.client_select_block.client_select_action.selected_option.value;
