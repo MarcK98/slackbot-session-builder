@@ -259,6 +259,13 @@ const clients = [
     customerId: "649025e334a855cf37cf58c7",
     flowId: "65d36f128db0af6615cc61f0",
     apiVersion: "v3",
+  }, {
+    label: "betano",
+    value: "betano",
+    customerId: "68943dafe01394c19e90cc7b",
+    flowId: "65d36f128db0af6615cc61f0",
+    env: 'uat'
+    apiVersion: "v3",
   },
   {
     label: "pockerstar",
@@ -266,6 +273,19 @@ const clients = [
     customerId: "66fcfe610bdca83f076203c0",
     flowId: "6679889b20b3b7d3d3a6465f",
     apiVersion: "v4",
+    person: {
+      firstname: "HARTMUT",
+      lastname: "HARTMUT",
+      phone: "324424324",
+    },
+  },
+  {
+    label: "pockerstar - uat",
+    value: "pockerstar - uat",
+    customerId: "68943e22e01394c19e90cc7e",
+    flowId: "6679889b20b3b7d3d3a6465f",
+    apiVersion: "v4",
+    env: 'uat'
     person: {
       firstname: "HARTMUT",
       lastname: "HARTMUT",
@@ -295,13 +315,14 @@ app.view("client_select_modal", async ({ ack, body, view, client }) => {
     flowId,
     apiVersion,
     redirectURL = "https://google.com",
+    env = 'staging'
     ...rest
   } = clientData;
 
   const {
     data: { startURL },
   } = await axios.post(
-    `${process.env.SESSION_REQUEST_URL}/api/${apiVersion}/session`,
+    `${env === 'uat' ? process.env.SESSION_REQUEST_URL_UAT : process.env.SESSION_REQUEST_URL}/api/${apiVersion}/session`,
     {
       language: "en",
       redirectURL,
