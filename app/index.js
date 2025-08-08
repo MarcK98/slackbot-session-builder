@@ -261,8 +261,8 @@ const clients = [
     apiVersion: "v3",
   },
   {
-    label: "betano",
-    value: "betano",
+    label: "betano - uat",
+    value: "betano - uat",
     customerId: "68943dafe01394c19e90cc7b",
     flowId: "65d36f128db0af6615cc61f0",
     env: "uat",
