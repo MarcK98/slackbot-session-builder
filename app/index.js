@@ -1,6 +1,6 @@
 const { App } = require("@slack/bolt");
 const axios = require("axios");
-const { v4: uuidv4 } = require('uuid');
+const { v4: uuidv4 } = require("uuid");
 
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
@@ -259,12 +259,13 @@ const clients = [
     customerId: "649025e334a855cf37cf58c7",
     flowId: "65d36f128db0af6615cc61f0",
     apiVersion: "v3",
-  }, {
+  },
+  {
     label: "betano",
     value: "betano",
     customerId: "68943dafe01394c19e90cc7b",
     flowId: "65d36f128db0af6615cc61f0",
-    env: 'uat'
+    env: "uat",
     apiVersion: "v3",
   },
   {
@@ -285,7 +286,7 @@ const clients = [
     customerId: "68943e22e01394c19e90cc7e",
     flowId: "6679889b20b3b7d3d3a6465f",
     apiVersion: "v4",
-    env: 'uat'
+    env: "uat",
     person: {
       firstname: "HARTMUT",
       lastname: "HARTMUT",
@@ -298,9 +299,10 @@ app.view("client_select_modal", async ({ ack, body, view, client }) => {
   await ack();
 
   const selectedClient =
-    view.state.values.client_select_block.client_select_action.selected_option.value;
+    view.state.values.client_select_block.client_select_action.selected_option
+      .value;
 
-  const clientData = clients.find(c => c.value === selectedClient);
+  const clientData = clients.find((c) => c.value === selectedClient);
 
   if (!clientData || !clientData.customerId || !clientData.flowId) {
     await client.chat.postMessage({
@@ -315,14 +317,18 @@ app.view("client_select_modal", async ({ ack, body, view, client }) => {
     flowId,
     apiVersion,
     redirectURL = "https://google.com",
-    env = 'staging'
+    env = "staging",
     ...rest
   } = clientData;
 
   const {
     data: { startURL },
   } = await axios.post(
-    `${env === 'uat' ? process.env.SESSION_REQUEST_URL_UAT : process.env.SESSION_REQUEST_URL}/api/${apiVersion}/session`,
+    `${
+      env === "uat"
+        ? process.env.SESSION_REQUEST_URL_UAT
+        : process.env.SESSION_REQUEST_URL
+    }/api/${apiVersion}/session`,
     {
       language: "en",
       redirectURL,
@@ -346,7 +352,7 @@ app.view("client_select_modal", async ({ ack, body, view, client }) => {
   });
 });
 
-app.command('/start-session', async ({ ack, body, client }) => {
+app.command("/start-session", async ({ ack, body, client }) => {
   await ack();
   await client.views.open({
     trigger_id: body.trigger_id,
